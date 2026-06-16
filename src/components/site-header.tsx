@@ -24,7 +24,7 @@ export function SiteHeader() {
           <img
             src={brand.horizontal}
             alt="NAPTEC — National Accreditation and Professional Training Evaluation Council"
-            className="h-10 w-auto sm:h-10"
+            className="h-14 w-auto sm:h-16"
           />
         </Link>
 
