@@ -48,7 +48,7 @@ function Directory() {
             <img
               src={brand.seal}
               alt="NAPTEC official accreditation seal"
-              className="mb-6 h-28 w-28"
+              className="mb-6 h-40 w-40"
               loading="lazy"
             />
             <SectionHeading center eyebrow="Directory" title="Searchable directory" description="Search by organisation name, type, or accreditation ID. (Demonstration data — placeholder records.)" />

@@ -29,7 +29,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
-            <img src={brand.seal} alt="NAPTEC official accreditation seal" width={48} height={48} className="h-12 w-12 rounded-full bg-white/95 p-0.5" loading="lazy" />
+            <img src={brand.seal} alt="NAPTEC official accreditation seal" width={48} height={48} className="h-16 w-16 rounded-full bg-white/95 p-0.5" loading="lazy" />
             <span className="font-serif text-xl font-bold">NAPTEC</span>
           </div>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-navy-foreground/70">
