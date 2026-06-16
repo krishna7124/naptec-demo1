@@ -8,7 +8,7 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    basepath: "/naptec-demo",
+    basepath: "/naptec-demo1",
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
   });

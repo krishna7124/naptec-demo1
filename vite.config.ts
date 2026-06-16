@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  base: "/naptec-demo/",
+  base: "/naptec-demo1/",
   plugins: [react(), tailwindcss(), tsconfigPaths()],
 });
