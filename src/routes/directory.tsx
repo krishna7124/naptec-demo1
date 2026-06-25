@@ -19,7 +19,7 @@ export const Route = createFileRoute("/directory")({
 
 const orgs = [
 
-{ name: "Cyber Secured Africs", level: "Full Accreditation", type: "Institution", id: "NAP-2026-001" },
+{ name: "Cyber Secured Africa (CSA)", level: "Full Accreditation", type: "Institution", id: "NAP-2026-001" },
 
   { name: "National Institute of Technology (Placeholder)", level: "Full Accreditation", type: "Institution", id: "NAP-2024-0112" },
   { name: "Centre for Professional Skills (Placeholder)", level: "Accreditation with Distinction", type: "Training Provider", id: "NAP-2023-0087" },
