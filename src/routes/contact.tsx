@@ -1,12 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { z } from "zod";
-import { toast } from "sonner";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { PageHero, Reveal } from "@/components/sections";
 
 export const Route = createFileRoute("/contact")({
@@ -36,24 +29,6 @@ const details = [
 ];
 
 function Contact() {
-  const [submitting, setSubmitting] = useState(false);
-
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const parsed = schema.safeParse(Object.fromEntries(new FormData(form)));
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Please check the form");
-      return;
-    }
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      toast.success("Thank you — your message has been sent.");
-      form.reset();
-    }, 700);
-  }
-
   return (
     <>
       <PageHero
@@ -85,32 +60,18 @@ function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form onSubmit={onSubmit} className="rounded-lg border border-border bg-card p-8 shadow-[var(--shadow-card)]">
-              <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
-              <div className="mt-6 grid gap-5">
-                <div className="grid gap-2 sm:grid-cols-2">
-                  <div className="grid gap-2">
-                    <Label htmlFor="name">Name *</Label>
-                    <Input id="name" name="name" required maxLength={100} placeholder="Your name" />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input id="email" name="email" type="email" required maxLength={255} placeholder="you@example.com" />
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="subject">Subject *</Label>
-                  <Input id="subject" name="subject" required maxLength={150} placeholder="How can we help?" />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="message">Message *</Label>
-                  <Textarea id="message" name="message" rows={5} required maxLength={1500} placeholder="Write your message…" />
-                </div>
-                <Button type="submit" size="lg" disabled={submitting}>
-                  {submitting ? "Sending…" : "Send Message"}
-                </Button>
-              </div>
-            </form>
+            <div className="overflow-hidden rounded-lg border border-border shadow-[var(--shadow-card)]">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfKttofxKl6FRtVR1emCMHRH4z1Dj91wykrTZCJp5xccrKKag/viewform?embedded=true"
+                width="100%"
+                height="700"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+              >
+                Loading…
+              </iframe>
+            </div>
           </Reveal>
         </div>
       </section>

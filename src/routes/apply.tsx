@@ -1,12 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { z } from "zod";
-import { toast } from "sonner";
 import { CheckCircle2, ClipboardList } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { PageHero, Reveal, SectionHeading } from "@/components/sections";
 
 export const Route = createFileRoute("/apply")({
@@ -21,14 +14,6 @@ export const Route = createFileRoute("/apply")({
   component: Apply,
 });
 
-const schema = z.object({
-  organization: z.string().trim().min(2, "Organization name is required").max(150),
-  contactName: z.string().trim().min(2, "Contact name is required").max(100),
-  email: z.string().trim().email("Enter a valid email").max(255),
-  type: z.string().trim().min(2, "Please specify the type").max(100),
-  message: z.string().trim().max(1500).optional(),
-});
-
 const eligibility = [
   "Legally registered and operating organisation",
   "Minimum of one completed delivery cycle",
@@ -37,24 +22,6 @@ const eligibility = [
 ];
 
 function Apply() {
-  const [submitting, setSubmitting] = useState(false);
-
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    const parsed = schema.safeParse(Object.fromEntries(fd));
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? "Please check the form");
-      return;
-    }
-    setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
-      toast.success("Application received. Our team will be in touch shortly.");
-      e.currentTarget?.reset?.();
-    }, 700);
-  }
-
   return (
     <>
       <PageHero
@@ -91,37 +58,18 @@ function Apply() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form onSubmit={onSubmit} className="rounded-lg border border-border bg-card p-8 shadow-[var(--shadow-card)]">
-              <h2 className="text-2xl font-bold text-navy">Online application</h2>
-              <p className="mt-1 text-sm text-muted-foreground">All fields marked with * are required.</p>
-              <div className="mt-6 grid gap-5">
-                <div className="grid gap-2">
-                  <Label htmlFor="organization">Organization name *</Label>
-                  <Input id="organization" name="organization" placeholder="Your institution or provider" required maxLength={150} />
-                </div>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  <div className="grid gap-2">
-                    <Label htmlFor="contactName">Contact name *</Label>
-                    <Input id="contactName" name="contactName" placeholder="Full name" required maxLength={100} />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input id="email" name="email" type="email" placeholder="you@org.org" required maxLength={255} />
-                  </div>
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="type">Type of accreditation sought *</Label>
-                  <Input id="type" name="type" placeholder="e.g. Institutional, Program, Quality Audit" required maxLength={100} />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="message">Additional details</Label>
-                  <Textarea id="message" name="message" rows={4} placeholder="Tell us about your organisation and goals" maxLength={1500} />
-                </div>
-                <Button type="submit" size="lg" disabled={submitting}>
-                  {submitting ? "Submitting…" : "Submit Application"}
-                </Button>
-              </div>
-            </form>
+            <div className="overflow-hidden rounded-lg border border-border shadow-[var(--shadow-card)]">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfIh61-P0bxUcvrDRRkpP0eyMQmFMPpb22zNsohhsMJ77SShA/viewform?embedded=true"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+              >
+                Loading…
+              </iframe>
+            </div>
           </Reveal>
         </div>
       </section>
