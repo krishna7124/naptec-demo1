@@ -4,6 +4,7 @@ import { Search, BadgeCheck, Building2, ShieldCheck } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { PageHero, Reveal, SectionHeading } from "@/components/sections";
 import { brand } from "@/assets/brand";
+import orgs from "@/data/orgs.json";
 
 export const Route = createFileRoute("/directory")({
   head: () => ({
@@ -16,16 +17,6 @@ export const Route = createFileRoute("/directory")({
   }),
   component: Directory,
 });
-
-const orgs = [
-  { name: "Cyber Secured Africa (CSA)", level: "Full Accreditation", type: "Institution", id: "NAP-2026-001" },
-  { name: "National Institute of Technology (Placeholder)", level: "Full Accreditation", type: "Institution", id: "NAP-2024-0112" },
-  { name: "Centre for Professional Skills (Placeholder)", level: "Accreditation with Distinction", type: "Training Provider", id: "NAP-2023-0087" },
-  { name: "Metropolitan Business Academy (Placeholder)", level: "Full Accreditation", type: "Institution", id: "NAP-2024-0203" },
-  { name: "Healthcare Training Council (Placeholder)", level: "Provisional Accreditation", type: "Program", id: "NAP-2025-0041" },
-  { name: "Digital Skills Foundation (Placeholder)", level: "Full Accreditation", type: "Training Provider", id: "NAP-2023-0156" },
-  { name: "Institute of Applied Sciences (Placeholder)", level: "Accreditation with Distinction", type: "Institution", id: "NAP-2022-0019" },
-];
 
 function Directory() {
   const [q, setQ] = useState("");
