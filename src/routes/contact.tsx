@@ -14,13 +14,6 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const schema = z.object({
-  name: z.string().trim().min(2, "Name is required").max(100),
-  email: z.string().trim().email("Enter a valid email").max(255),
-  subject: z.string().trim().min(2, "Subject is required").max(150),
-  message: z.string().trim().min(5, "Please add a message").max(1500),
-});
-
 const details = [
   { icon: Mail, t: "Email", v: "info@naptec.org", href: "mailto:info@naptec.org" },
   { icon: Phone, t: "Phone", v: "+1 (000) 000-0000", href: "tel:+10000000000" },
