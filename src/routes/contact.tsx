@@ -61,6 +61,8 @@ function Contact() {
                 frameBorder="0"
                 marginHeight={0}
                 marginWidth={0}
+                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+                title="NAPTEC Contact Form"
               >
                 Loading…
               </iframe>
