@@ -3,6 +3,15 @@ import type {} from "@tanstack/react-start";
 
 const BASE_URL = "";
 
+function escapeXml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 interface SitemapEntry {
   path: string;
   changefreq?: "weekly" | "monthly";
@@ -27,9 +36,9 @@ export const Route = createFileRoute("/sitemap.xml")({
         const urls = entries.map((e) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
-            e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
-            e.priority ? `    <priority>${e.priority}</priority>` : null,
+            `    <loc>${escapeXml(BASE_URL + e.path)}</loc>`,
+            e.changefreq ? `    <changefreq>${escapeXml(e.changefreq)}</changefreq>` : null,
+            e.priority ? `    <priority>${escapeXml(e.priority)}</priority>` : null,
             `  </url>`,
           ]
             .filter(Boolean)
